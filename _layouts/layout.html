@@ -4,14 +4,52 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="author" content="Your Name" />
+      <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">
+      <style type='text/css'>
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .navbar-inner {
+        font-family: Open Sans;
+      }
+      </style>
+      <link rel="stylesheet" href="/css/bootstrap/css/bootstrap-responsive.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <title>{{ page.title }}</title>
   </head>
-  <body>
-    <header>
-      <h1><a href="/">{{ page.title }}</a></h1>
-    </header>
-    <section>
+<body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Julie Swoope   </a>
+          <div class="nav-collapse">
+          <ul class="nav">
+          <li><a href="/about/">About</a></li>
+          <li><a href="http://twitter.com/julieswoope">Twitter</a></li>
+          <li><a href="http://github.com/swoopej">Github</a></li>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row"><br>
+  <div class="span8 offset2">
+    <div class="content">
       {{ content }}
-    </section>
-  </body>
+    </div>
+  </div>
+</div>
+    <div class="row"><br>
+    <div class="span12"><br>
+        <div class="footer">
+            <p>   Created by Julie Swoope
+            with <a href="https://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</p>
+        </div> <!-- close footer -->
+        </div>
+    </div>
+
+    </body>
 </html>
+
