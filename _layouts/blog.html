@@ -4,11 +4,10 @@ layout: layout
 
 {% for post in site.posts offset: 0 limit: 6 %}
 
-<div id="entry-link">
 	{{ post.content }}
 	<p class="meta">
   	<time datetime="{{ post.date }}">{{ post.date | date: "%b %d, %Y" }}</time> | <a href="{{ post.url }}" class="link-post">∞</a>
 </p>
-</div>
+<hr>
 
 {% endfor %}
