@@ -13,8 +13,10 @@ The setup:  I have a function that will be passed in a string, and I want it to 
 
 I originally wrote the scraper with the neighborhood names that I was searching for in a list.  That is, I had a list of ['DUMBO', 'Fort Greene'...].  This worked fine, and with the help of Hacker School, I had an awesomely short list comprehension that did ran through the list, checked the string for both uppercase and lowercase versions of the string, and returned a list of the names that appear.  This was the whole function:
 
+    {% highlight python %}
     def find_nabe(item):
         return [x for x in NEIGHBORHOOD_LIST if any(item.find(y) != -1 for y in [x, x.lower(), x.upper()])]
+    {% endhighlight %}
 
 But the problem, which I mentioned below, is that there are a lot of misspellings on Craigslist and a lot of different ways to refer to a neighborhood (i.e. Bed-Stuy, BedStuy, Bedford-Stuyvesant).  So I made a dictionary that has one key spelling for each neighborhood mapped to all of the possible spellings I want to look for.  I only want to store the key in my database, so I need the function to return the key when it finds one of the values.  I still need the function to return a list, even if it is a singleton list, to keep the ability to have a one Craigslist listing be associated with multiple neighborhoods in my database.
 
