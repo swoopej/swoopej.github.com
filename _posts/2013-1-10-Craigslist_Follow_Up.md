@@ -20,6 +20,7 @@ But the problem, which I mentioned below, is that there are a lot of misspelling
 
 It's not that difficult of a problem, but I struggled with it for a day or so because I was trying to replicate something slick like the list comprehension above.  But a friend of mine pointed out that the length of the list comprehension was getting long, and it was actually much easier to understand simple nested loops.  So, I just broke part of the looping out to it's own function, and came up with this (keep in mind NEIGHBORHOOD_LIST is now a dictionary, and it was a list above):
 
+    {% highlight python %}
     def find_nabe(item):
         nabes = []
         for k, v in NEIGHBORHOOD_LIST.items():
@@ -32,6 +33,7 @@ It's not that difficult of a problem, but I struggled with it for a day or so be
             for value in v:
                 if any(item.find(y) != -1 for y in [value, value.lower(), value.upper()]):
                     return k
+    {% endhighlight %}
 
 It's eleven lines of code where I used to have two, but it's probably a lot easier to understand and debug than trying to pack this all into a list comprehension.  And speed isn't really an issue here...This is just a script to populate the database.
 

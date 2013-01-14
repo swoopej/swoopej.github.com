@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="author" content="Your Name" />
       <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="/css/pygments.css">
       <style type='text/css'>
       body {
         padding-top: 60px;
@@ -96,19 +97,21 @@
 
 <p>It's not that difficult of a problem, but I struggled with it for a day or so because I was trying to replicate something slick like the list comprehension above.  But a friend of mine pointed out that the length of the list comprehension was getting long, and it was actually much easier to understand simple nested loops.  So, I just broke part of the looping out to it's own function, and came up with this (keep in mind NEIGHBORHOOD_LIST is now a dictionary, and it was a list above):</p>
 
-<pre><code>def find_nabe(item):
-    nabes = []
-    for k, v in NEIGHBORHOOD_LIST.items():
-        newnabe = (check_spellings(item, k, v))
-        if newnabe: nabes.append(newnabe)
-    return nabes
+<div class="highlight"><pre><code class="python">    <span class="k">def</span> <span class="nf">find_nabe</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="n">nabes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">NEIGHBORHOOD_LIST</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">newnabe</span> <span class="o">=</span> <span class="p">(</span><span class="n">check_spellings</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">newnabe</span><span class="p">:</span> <span class="n">nabes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newnabe</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nabes</span>
 
-def check_spellings(item, k, v):
-        nabes = []
-        for value in v:
-            if any(item.find(y) != -1 for y in [value, value.lower(), value.upper()]):
-                return k
-</code></pre>
+    <span class="k">def</span> <span class="nf">check_spellings</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+            <span class="n">nabes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">value</span><span class="o">.</span><span class="n">upper</span><span class="p">()]):</span>
+                    <span class="k">return</span> <span class="n">k</span>
+    
+</code></pre></div>
+
 
 <p>It's eleven lines of code where I used to have two, but it's probably a lot easier to understand and debug than trying to pack this all into a list comprehension.  And speed isn't really an issue here...This is just a script to populate the database.</p>
 
@@ -125,24 +128,26 @@ def check_spellings(item, k, v):
 
 <p>My first larger project at Hacker School was <a href="http://github.com/swoopej/cl_indexer" title="Craigslist Indexer">Craigslist Indexer</a>, which is an app to scrape the Craigslist housing listings.  With a lot of other websites, this wouldn't be a 2-3 week project, but Craigslist has no API and a poorly formatted RSS feed, so aggregation isn't easy.  Here is a sample listing from the Craigslist feed:</p>
 
-<pre><code>&lt;item rdf:about="http://newyork.craigslist.org/brk/abo/3396723906.html"&gt;
-&lt;title&gt;&lt;![CDATA[* HOT 3 BR * NEW* CLOSE TO J M Z TRAINS* GREAT BLOCK * E. WILLIAMSBURG (E. WilliamsBurg / Bushwick JMZ ) $2200 3bd]]&gt;&lt;/title&gt;
-&lt;link&gt;http://newyork.craigslist.org/brk/abo/3396723906.html&lt;/link&gt;
-&lt;description&gt;&lt;![CDATA[Brand new apartment ! Will be finished by DEC 1st 
-Close by trains J M Z 
-Beautiful tree line block. As well it is quiet! 
-WELL MAINTAINED building ... Kept CLEAN and KEPT at all times !!!! 
-The APARTMENT has nice high ceilings *** 
-Large Closets ..  [...]]]&gt;&lt;/description&gt;
-&lt;dc:date&gt;2012-11-26T12:22:02-05:00&lt;/dc:date&gt;
-&lt;dc:language&gt;en-us&lt;/dc:language&gt;
-&lt;dc:rights&gt;Copyright &amp;#x26;copy; 2012 craigslist, inc.&lt;/dc:rights&gt;
-&lt;dc:source&gt;http://newyork.craigslist.org/brk/abo/3396723906.html&lt;/dc:source&gt;
-&lt;dc:title&gt;&lt;![CDATA[* HOT 3 BR * NEW* CLOSE TO J M Z TRAINS* GREAT BLOCK * E. WILLIAMSBURG (E. WilliamsBurg / Bushwick JMZ ) $2200 3bd]]&gt;&lt;/dc:title&gt;
-&lt;dc:type&gt;text&lt;/dc:type&gt;
-&lt;dcterms:issued&gt;2012-11-26T12:22:02-05:00&lt;/dcterms:issued&gt;
-&lt;/item&gt;
-</code></pre>
+<div class="highlight"><pre><code class="html">    <span class="nt">&lt;item</span> <span class="na">rdf:about=</span><span class="s">&quot;http://newyork.craigslist.org/brk/abo/3396723906.html&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span><span class="cp">&lt;![CDATA[* HOT 3 BR * NEW* CLOSE TO J M Z TRAINS* GREAT BLOCK * E. WILLIAMSBURG (E. WilliamsBurg / Bushwick JMZ ) $2200 3bd]]&gt;</span><span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link&gt;</span>http://newyork.craigslist.org/brk/abo/3396723906.html<span class="nt">&lt;/link&gt;</span>
+    <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![CDATA[Brand new apartment ! Will be finished by DEC 1st </span>
+<span class="cp">    Close by trains J M Z </span>
+<span class="cp">    Beautiful tree line block. As well it is quiet! </span>
+<span class="cp">    WELL MAINTAINED building ... Kept CLEAN and KEPT at all times !!!! </span>
+<span class="cp">    The APARTMENT has nice high ceilings *** </span>
+<span class="cp">    Large Closets ..  [...]]]&gt;</span><span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;dc:date&gt;</span>2012-11-26T12:22:02-05:00<span class="nt">&lt;/dc:date&gt;</span>
+    <span class="nt">&lt;dc:language&gt;</span>en-us<span class="nt">&lt;/dc:language&gt;</span>
+    <span class="nt">&lt;dc:rights&gt;</span>Copyright <span class="ni">&amp;#x26;</span>copy; 2012 craigslist, inc.<span class="nt">&lt;/dc:rights&gt;</span>
+    <span class="nt">&lt;dc:source&gt;</span>http://newyork.craigslist.org/brk/abo/3396723906.html<span class="nt">&lt;/dc:source&gt;</span>
+    <span class="nt">&lt;dc:title&gt;</span><span class="cp">&lt;![CDATA[* HOT 3 BR * NEW* CLOSE TO J M Z TRAINS* GREAT BLOCK * E. WILLIAMSBURG (E. WilliamsBurg / Bushwick JMZ ) $2200 3bd]]&gt;</span><span class="nt">&lt;/dc:title&gt;</span>
+    <span class="nt">&lt;dc:type&gt;</span>text<span class="nt">&lt;/dc:type&gt;</span>
+    <span class="nt">&lt;dcterms:issued&gt;</span>2012-11-26T12:22:02-05:00<span class="nt">&lt;/dcterms:issued&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+    
+</code></pre></div>
+
 
 <p>Most of the information that I wanted, i.e. neighborhood, price, and bedrooms, are actually contained in the same title tag, with other delineation to separate them.  The only consistent structures are 1) parentheses around the neighborhood, 2) a dollar sign before the price, and 3) the bedrooms are a digit followed by "bd".</p>
 
@@ -175,40 +180,43 @@ Large Closets ..  [...]]]&gt;&lt;/description&gt;
 
 <p>The gist of it is that a WSGI server will call a WSGI app with two variables when it receives a request.  One is an <a href="http://www.python.org/dev/peps/pep-0333/#environ-variables" title="#environ">environment dictionary</a> containing information about the request and the server environment, and the other is a function that must be called by the WSGI framework to start the response on the server.  It's really remarkably simple.  So a simple WSGI app using the Python Standard Library WSGI server looks something like this:</p>
 
-<pre><code>from wsgiref.simple_server import make_server
+<div class="highlight"><pre><code class="python">    <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
 
-class Canteen(object):
+    <span class="k">class</span> <span class="nc">Canteen</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    def run_server(self):
-    #instantiate the wsgi server
-    #receives request, passes to wsgi app
-    #send app's response to client
-    httpd = make_server(
-        'localhost', 
-        8051,
-        self.wsgi_app #calls the WSGI app
-        )
+        <span class="k">def</span> <span class="nf">run_server</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c">#instantiate the wsgi server</span>
+        <span class="c">#receives request, passes to wsgi app</span>
+        <span class="c">#send app&#39;s response to client</span>
+        <span class="n">httpd</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span>
+            <span class="s">&#39;localhost&#39;</span><span class="p">,</span> 
+            <span class="mi">8051</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wsgi_app</span> <span class="c">#calls the WSGI app</span>
+            <span class="p">)</span>
 
-    def wsgi_app(self, environ, start_response):
-        '''
-        called by the server with the environ dict and the start_response function
+        <span class="k">def</span> <span class="nf">wsgi_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            called by the server with the environ dict and the start_response function</span>
 
-        start_response must be called to start the http response.  
+<span class="sd">            start_response must be called to start the http response.  </span>
 
-        This function will
-        return the response body as an iterable.
-        '''
-        response body = 'yolo'
-        status = '200 OK'
-        headers = [('Content_Type', 'text/html'),
-            ('Content_Length', str(len(response_body)))]
-        start_response(status, response_headers)
-        return [response_body]
+<span class="sd">            This function will</span>
+<span class="sd">            return the response body as an iterable.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">response</span> <span class="n">body</span> <span class="o">=</span> <span class="s">&#39;yolo&#39;</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="s">&#39;200 OK&#39;</span>
+            <span class="n">headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;Content_Type&#39;</span><span class="p">,</span> <span class="s">&#39;text/html&#39;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s">&#39;Content_Length&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">response_body</span><span class="p">)))]</span>
+            <span class="n">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">response_body</span><span class="p">]</span>
 
-if __name__ == "__main__":
-    app = Canteen()
-    app.run_server()
-</code></pre>
+    <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">Canteen</span><span class="p">()</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">()</span>
+
+    
+</code></pre></div>
+
 
 <p>And that's it.  Run that on your local machine, and you will be told that you only live once when you go to port 8051.</p>
 
@@ -216,22 +224,26 @@ if __name__ == "__main__":
 
 <p>I've built a few small apps in Flask, and it's awesome how quickly you can get an app running.  To add a url to your app in Flask, all it takes is this:</p>
 
-<pre><code>app = Flask()
+<div class="highlight"><pre><code class="python">    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">()</span>
 
-@app.route('/')
-def index():
-    render_template(index.html)
-</code></pre>
+    <span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+        <span class="n">render_template</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">)</span>
+    
+</code></pre></div>
+
 
 <p>and we managed to copy the same syntax (minus the render_template method for now).  Here's how we did it:</p>
 
-<pre><code>def add_route(self, path, methods= 'GET'):
-    '''decorates a user supplied function by adding path to self.routes'''
-    def decorator(f):
-        r = Route(path, f, methods)
-        self.routes.append(r)
-    return decorator 
-</code></pre>
+<div class="highlight"><pre><code class="python">    <span class="k">def</span> <span class="nf">add_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span> <span class="s">&#39;GET&#39;</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;decorates a user supplied function by adding path to self.routes&#39;&#39;&#39;</span>
+        <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">Route</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">methods</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">decorator</span>
+    
+</code></pre></div>
+
 
 <p>The decorator creates a new Route object and stores the path, the valid HTTP methods, and the function to be called on the Route object.  That new object is added to the list of Route objects at self.routes, and the decorator function is returned.  When a new HTTP request comes in, framework will go through the Route objects, find the right one, and call the function stored on that objects.  If it doesn't find the right one, you get a 404.</p>
 

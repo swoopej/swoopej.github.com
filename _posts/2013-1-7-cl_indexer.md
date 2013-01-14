@@ -10,6 +10,7 @@ My first larger project at Hacker School was [Craigslist Indexer][1], which is a
 
 [1]: http://github.com/swoopej/cl_indexer "Craigslist Indexer"
 
+    {% highlight html %}
     <item rdf:about="http://newyork.craigslist.org/brk/abo/3396723906.html">
     <title><![CDATA[* HOT 3 BR * NEW* CLOSE TO J M Z TRAINS* GREAT BLOCK * E. WILLIAMSBURG (E. WilliamsBurg / Bushwick JMZ ) $2200 3bd]]></title>
     <link>http://newyork.craigslist.org/brk/abo/3396723906.html</link>
@@ -27,6 +28,7 @@ My first larger project at Hacker School was [Craigslist Indexer][1], which is a
     <dc:type>text</dc:type>
     <dcterms:issued>2012-11-26T12:22:02-05:00</dcterms:issued>
     </item>
+    {% endhighlight %}
 
 Most of the information that I wanted, i.e. neighborhood, price, and bedrooms, are actually contained in the same title tag, with other delineation to separate them.  The only consistent structures are 1) parentheses around the neighborhood, 2) a dollar sign before the price, and 3) the bedrooms are a digit followed by "bd".
 

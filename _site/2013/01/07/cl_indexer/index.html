@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="author" content="Your Name" />
       <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="/css/pygments.css">
       <style type='text/css'>
       body {
         padding-top: 60px;
@@ -68,24 +69,26 @@
 
 <p>My first larger project at Hacker School was <a href="http://github.com/swoopej/cl_indexer" title="Craigslist Indexer">Craigslist Indexer</a>, which is an app to scrape the Craigslist housing listings.  With a lot of other websites, this wouldn't be a 2-3 week project, but Craigslist has no API and a poorly formatted RSS feed, so aggregation isn't easy.  Here is a sample listing from the Craigslist feed:</p>
 
-<pre><code>&lt;item rdf:about="http://newyork.craigslist.org/brk/abo/3396723906.html"&gt;
-&lt;title&gt;&lt;![CDATA[* HOT 3 BR * NEW* CLOSE TO J M Z TRAINS* GREAT BLOCK * E. WILLIAMSBURG (E. WilliamsBurg / Bushwick JMZ ) $2200 3bd]]&gt;&lt;/title&gt;
-&lt;link&gt;http://newyork.craigslist.org/brk/abo/3396723906.html&lt;/link&gt;
-&lt;description&gt;&lt;![CDATA[Brand new apartment ! Will be finished by DEC 1st 
-Close by trains J M Z 
-Beautiful tree line block. As well it is quiet! 
-WELL MAINTAINED building ... Kept CLEAN and KEPT at all times !!!! 
-The APARTMENT has nice high ceilings *** 
-Large Closets ..  [...]]]&gt;&lt;/description&gt;
-&lt;dc:date&gt;2012-11-26T12:22:02-05:00&lt;/dc:date&gt;
-&lt;dc:language&gt;en-us&lt;/dc:language&gt;
-&lt;dc:rights&gt;Copyright &amp;#x26;copy; 2012 craigslist, inc.&lt;/dc:rights&gt;
-&lt;dc:source&gt;http://newyork.craigslist.org/brk/abo/3396723906.html&lt;/dc:source&gt;
-&lt;dc:title&gt;&lt;![CDATA[* HOT 3 BR * NEW* CLOSE TO J M Z TRAINS* GREAT BLOCK * E. WILLIAMSBURG (E. WilliamsBurg / Bushwick JMZ ) $2200 3bd]]&gt;&lt;/dc:title&gt;
-&lt;dc:type&gt;text&lt;/dc:type&gt;
-&lt;dcterms:issued&gt;2012-11-26T12:22:02-05:00&lt;/dcterms:issued&gt;
-&lt;/item&gt;
-</code></pre>
+<div class="highlight"><pre><code class="html">    <span class="nt">&lt;item</span> <span class="na">rdf:about=</span><span class="s">&quot;http://newyork.craigslist.org/brk/abo/3396723906.html&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span><span class="cp">&lt;![CDATA[* HOT 3 BR * NEW* CLOSE TO J M Z TRAINS* GREAT BLOCK * E. WILLIAMSBURG (E. WilliamsBurg / Bushwick JMZ ) $2200 3bd]]&gt;</span><span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link&gt;</span>http://newyork.craigslist.org/brk/abo/3396723906.html<span class="nt">&lt;/link&gt;</span>
+    <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![CDATA[Brand new apartment ! Will be finished by DEC 1st </span>
+<span class="cp">    Close by trains J M Z </span>
+<span class="cp">    Beautiful tree line block. As well it is quiet! </span>
+<span class="cp">    WELL MAINTAINED building ... Kept CLEAN and KEPT at all times !!!! </span>
+<span class="cp">    The APARTMENT has nice high ceilings *** </span>
+<span class="cp">    Large Closets ..  [...]]]&gt;</span><span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;dc:date&gt;</span>2012-11-26T12:22:02-05:00<span class="nt">&lt;/dc:date&gt;</span>
+    <span class="nt">&lt;dc:language&gt;</span>en-us<span class="nt">&lt;/dc:language&gt;</span>
+    <span class="nt">&lt;dc:rights&gt;</span>Copyright <span class="ni">&amp;#x26;</span>copy; 2012 craigslist, inc.<span class="nt">&lt;/dc:rights&gt;</span>
+    <span class="nt">&lt;dc:source&gt;</span>http://newyork.craigslist.org/brk/abo/3396723906.html<span class="nt">&lt;/dc:source&gt;</span>
+    <span class="nt">&lt;dc:title&gt;</span><span class="cp">&lt;![CDATA[* HOT 3 BR * NEW* CLOSE TO J M Z TRAINS* GREAT BLOCK * E. WILLIAMSBURG (E. WilliamsBurg / Bushwick JMZ ) $2200 3bd]]&gt;</span><span class="nt">&lt;/dc:title&gt;</span>
+    <span class="nt">&lt;dc:type&gt;</span>text<span class="nt">&lt;/dc:type&gt;</span>
+    <span class="nt">&lt;dcterms:issued&gt;</span>2012-11-26T12:22:02-05:00<span class="nt">&lt;/dcterms:issued&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+    
+</code></pre></div>
+
 
 <p>Most of the information that I wanted, i.e. neighborhood, price, and bedrooms, are actually contained in the same title tag, with other delineation to separate them.  The only consistent structures are 1) parentheses around the neighborhood, 2) a dollar sign before the price, and 3) the bedrooms are a digit followed by "bd".</p>
 

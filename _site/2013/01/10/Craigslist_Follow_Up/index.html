@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="author" content="Your Name" />
       <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="/css/pygments.css">
       <style type='text/css'>
       body {
         padding-top: 60px;
@@ -80,19 +81,21 @@
 
 <p>It's not that difficult of a problem, but I struggled with it for a day or so because I was trying to replicate something slick like the list comprehension above.  But a friend of mine pointed out that the length of the list comprehension was getting long, and it was actually much easier to understand simple nested loops.  So, I just broke part of the looping out to it's own function, and came up with this (keep in mind NEIGHBORHOOD_LIST is now a dictionary, and it was a list above):</p>
 
-<pre><code>def find_nabe(item):
-    nabes = []
-    for k, v in NEIGHBORHOOD_LIST.items():
-        newnabe = (check_spellings(item, k, v))
-        if newnabe: nabes.append(newnabe)
-    return nabes
+<div class="highlight"><pre><code class="python">    <span class="k">def</span> <span class="nf">find_nabe</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="n">nabes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">NEIGHBORHOOD_LIST</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">newnabe</span> <span class="o">=</span> <span class="p">(</span><span class="n">check_spellings</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">newnabe</span><span class="p">:</span> <span class="n">nabes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newnabe</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nabes</span>
 
-def check_spellings(item, k, v):
-        nabes = []
-        for value in v:
-            if any(item.find(y) != -1 for y in [value, value.lower(), value.upper()]):
-                return k
-</code></pre>
+    <span class="k">def</span> <span class="nf">check_spellings</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+            <span class="n">nabes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">value</span><span class="o">.</span><span class="n">upper</span><span class="p">()]):</span>
+                    <span class="k">return</span> <span class="n">k</span>
+    
+</code></pre></div>
+
 
 <p>It's eleven lines of code where I used to have two, but it's probably a lot easier to understand and debug than trying to pack this all into a list comprehension.  And speed isn't really an issue here...This is just a script to populate the database.</p>
 
