@@ -30,6 +30,7 @@ It's not that difficult of a problem, but I struggled with it for a day or so be
             if newnabe: nabes.append(newnabe)
         return nabes
 
+
     def check_spellings(item, k, v):
             nabes = []
             for value in v:
