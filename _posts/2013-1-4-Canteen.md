@@ -18,7 +18,7 @@ The gist of it is that a WSGI server will call a WSGI app with two variables whe
 
 [3]: http://www.python.org/dev/peps/pep-0333/#environ-variables "#environ"
 
-    {% highlight python %}
+```
     from wsgiref.simple_server import make_server
 
     class Canteen(object):
@@ -53,30 +53,31 @@ The gist of it is that a WSGI server will call a WSGI app with two variables whe
         app = Canteen()
         app.run_server()
 
-    {% endhighlight %}
+```
 
 And that's it.  Run that on your local machine, and you will be told that you only live once when you go to port 8051.
 
 The second thing I'll talk about in this post is how we built the interface to our framework, which is nearly identical to that of Flask, another Python framework (side note here:  after digging around in the Flask code for days, it is, in the words of Angus, "quite slick").  
 
 I've built a few small apps in Flask, and it's awesome how quickly you can get an app running.  To add a url to your app in Flask, all it takes is this:
-    {% highlight python %}
+```
     app = Flask()
 
     @app.route('/')
     def index():
     	render_template(index.html)
-    {% endhighlight %}
-and we managed to copy the same syntax (minus the render_template method for now).  Here's how we did it:
-    {% highlight python %}
+```
 
+and we managed to copy the same syntax (minus the render_template method for now).  Here's how we did it:
+
+```
     def add_route(self, path, methods= 'GET'):
         '''decorates a user supplied function by adding path to self.routes'''
         def decorator(f):
             r = Route(path, f, methods)
             self.routes.append(r)
         return decorator
-    {% endhighlight %} 
+``` 
 
 The decorator creates a new Route object and stores the path, the valid HTTP methods, and the function to be called on the Route object.  That new object is added to the list of Route objects at self.routes, and the decorator function is returned.  When a new HTTP request comes in, framework will go through the Route objects, find the right one, and call the function stored on that objects.  If it doesn't find the right one, you get a 404.
 
