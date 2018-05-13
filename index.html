@@ -9,6 +9,9 @@ title:  Welcome
       {% for post in site.posts limit:6 %}
       <li>
 	{{ post.date | date: "%B %e, %Y" }}<br>
+  <a class="post-link" href="{{ post.url | relative_url }}">
+    {{ post.title | escape }}
+  </a><br>
 	{{ post.content }}
       </li>
       <br>
