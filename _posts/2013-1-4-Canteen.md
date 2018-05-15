@@ -3,8 +3,6 @@ layout: post
 title: Framework Reflections
 ---
 
-Canteen
-=====
 I wanted to write a reflection on the work that I have done so far on [Canteen][1], a web framework that I have been working on building from scratch at Hacker School.  I should add up front that not all of the work is mine, I've been working with fellow Hacker Schooler [Angus Burton][2], and he's certainly helped in ways that I couldn't have done myself.
 
 [1]: https://github.com/swoopej/canteen "Canteen"

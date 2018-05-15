@@ -3,9 +3,6 @@ layout: post
 title: Craigslist Indexer
 ---
 
-Craigslist Indexer
-=====
-
 My first larger project at Hacker School was [Craigslist Indexer][1], which is an app to scrape the Craigslist housing listings.  With a lot of other websites, this wouldn't be a 2-3 week project, but Craigslist has no API and a poorly formatted RSS feed, so aggregation isn't easy.  Here is a sample listing from the Craigslist feed:
 
 [1]: http://github.com/swoopej/cl_indexer "Craigslist Indexer"

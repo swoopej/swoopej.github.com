@@ -3,8 +3,6 @@ layout: post
 title: Craigslist Indexer Addendum
 ---
 
-Craigslist Indexer Addendum
-=====
 I should add something to the Craigslist Indexer [post below][1], because I just pushed some changes today that were glossed over in my previous post, and I think it's something that I (and perhaps others?) seem to do regularly.
 
 [1]: /2013/01/07/cl_indexer/ "Craigslist Indexer"
