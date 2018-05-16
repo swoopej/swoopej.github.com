@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Testing, Mental Blocks and Engineering Interviews
+title: Testing and Breaking Through Mental Blocks
 ---
 
-I recently went through a job search process and went on a lot of interviews.  Similar questions often come up in engineering interviews across companies, and some of them were actually really helpful because they made me articulate some of the ways I go about doing my day to day work that I hadn't before.  After 5+ years of working as a software engineer at three different companies writing many different languages, I've built up a some habits and techniques that I'm barely even conscious of.  Finding ways to explain those habits and techniques gave me good material to talk about in interviews for the "soft skills" questions, and I think it also gave me some clarity on how I can be more productive at work.
+I recently went through a job search process and went on a lot of interviews.  Similar questions often come up in engineering interviews across companies, and some of them were actually really helpful because they made me articulate some of the ways I go about doing my day to day work that I hadn't before.  After several years of working as a software engineer at three different companies writing many different languages, I've built up a some habits and techniques that I'm barely even conscious of.  Finding ways to explain those habits and techniques gave me good material to talk about in interviews for the "soft skills" questions, and I think it also gave me some clarity on how I can be more productive at work.
 
 One thing that kept coming up for me was how I use testing.  Sometimes the question was directly related to testing like "how do you approach testing?", but sometimes the question was "how do you approach breaking down a problem", or "what do you do when you feel stuck on a problem", or even "what is your biggest weakness?".  And I found myself reaching for how I use testing to answer all of those.
 
