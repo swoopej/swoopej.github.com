@@ -3,7 +3,7 @@ layout: post
 title: Doing Good vs Doing Well in Tech
 ---
 
-[_Winners Take All: The Elite Charade of Changing the World_][1] by Anand Giridharadas was my favorite book I read this year.  I rarely find non fiction that I love, it's more of a kind of exercise I put myself through for some reason.  It's probably because thought leader people are always reading non fiction, so it's fitting that criticizing the thought leader industry is a theme of my favorite non fiction book in a long time.  _Winners Take All_ ended up describing a lot of things that have bothered me for years about the tech industry that I haven't been able to articulate very well.
+[_Winners Take All: The Elite Charade of Changing the World_][1] by Anand Giridharadas was my favorite book I read this year.  I rarely find non fiction that I love, it's more of a kind of exercise I put myself through for some reason.  I think I read non fiction because thought leader people are always doing it, so it's fitting that criticizing the thought leader industry is a theme of my favorite non fiction book in a long time.  _Winners Take All_ ended up describing a lot of things that have bothered me for years about the tech industry that I haven't been able to articulate very well.
 
 A lot of the book is devoted to criticism of what Giridharadas calls "MarketWorld", which is basically the idea that social problems are going to be solved through capitalism.  It's pervasive idea in the tech industry: I can get very rich while doing things that move humanity forward.   Conscious capitalism - Kickstarter, Etsy, [even maybe Blue Apron?][6]. Edtech, Medtech, making money by giving people something they need.  Everyone wins. 
 
